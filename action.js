@@ -37,8 +37,8 @@ const action = async () => {
         milestone: milestone
     };
 
-    const result = await octokit.pulls.update(params);
-    core.setOutput("result", JSON.stringify(result.data));
+    // const result = await octokit.pulls.update(params);
+    core.setOutput("result", JSON.stringify(params));
 
 }
 
