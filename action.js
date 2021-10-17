@@ -35,7 +35,8 @@ const action = async () => {
     );
     const octokit = github.getOctokit(gitHubToken);
 
-    const licenseExist = await checks.checkFileExistence("LICENSE2");
+    const licenseExists = await checks.checkFileExistence("LICENSE2");
+    const readMeExists = await checks.checkFileExistence("README.md");
 
     // create a check for missing file
     let missingFileCheck = {
@@ -52,12 +53,18 @@ const action = async () => {
     }
 
     
-    if (licenseExist) {
+    if (licenseExists) {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅  *License* file found";
     } else {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *License* file not found";
-        missingFileCheck.conclusion = "failure";
-        missingFileCheck.conclusion = "action_required";
+        missingFileCheck.conclusion = "stale";
+    }
+
+    if (readMeExists) {
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅  *README.md* file found";
+    } else {
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *README.md* file not found";
+        missingFileCheck.conclusion = "stale";
     }
 
     await octokit.rest.checks.create(missingFileCheck);
