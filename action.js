@@ -20,6 +20,7 @@ const action = async () => {
     const base = core.getInput('base');
 
 
+    const commit = core.getInput('commit');
     const pullRequest = github.context.payload.pull_request;
     const link = (pullRequest && pullRequest.html_url) || github.context.ref;    
     const name = core.getInput('check_name');
