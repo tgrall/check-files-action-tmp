@@ -16,7 +16,7 @@ async function run() {
     throw new Error('Could not find pull request!')
   };
 
-  console.log(`Found pull request: ${pull_request.number}`);
+  console.log(`Found pull request --->>>> ${pull_request.number}`);
 
   const octokit = github.getOctokit(GITHUB_TOKEN)
 
