@@ -43,7 +43,19 @@ const action = async () => {
         output: {
             title,
             summary: "Tug's summary",
-            annotations: ["annot 1", "annot 2"],
+            annotations: [
+                {
+                path : "README.md",
+                start_line: 1,
+                end_line: 1,
+                start_column: 2,
+                end_column: 4,
+                annotation_level: 'failure',
+                title : "Error in readme",
+                message : "this is invalid",
+                raw_details: undefined                
+                }
+            ],
         }    
     };
 
