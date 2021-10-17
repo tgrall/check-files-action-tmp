@@ -46,16 +46,16 @@ const action = async () => {
         conclusion : "success",
         output: {
             title : "Missing Files",
-            summary: "", // "The _Missing Files_ action has returned the following information: ",
+            summary: "The _Missing Files_ action has returned the following information: ",
             annotations: undefined, // no annotations we just want to raise some information
         } 
     }
 
     
     if (licenseExist) {
-        missingFileCheck.summary = missingFileCheck.summary + " ✅  License file found";
+        missingFileCheck.output.summary = missingFileCheck.output.summary + " ✅  License file found";
     } else {
-        missingFileCheck.summary = missingFileCheck.summary + "⚠️  License file not found";
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "⚠️  License file not found";
         missingFileCheck.conclusion = "neutral";
     }
 
