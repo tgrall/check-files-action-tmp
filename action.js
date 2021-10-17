@@ -30,7 +30,7 @@ const action = async () => {
     const conclusion =  "success";
 
     core.info(
-        `Posting status '${status}' with conclusion '${conclusion}' to ${link} (sha: ${head_sha})`
+        `Posting status '${status}' with conclusion '${conclusion}' to ${link} (sha: ${headSha})`
     );
     const octokit = github.getOctokit(gitHubToken);
 
