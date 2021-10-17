@@ -25,7 +25,7 @@ const action = async () => {
     const link = (pullRequest && pullRequest.html_url) || github.context.ref;    
     const name = core.getInput('check_name');
     const status = 'completed';
-    const head_sha = commit || (pullRequest && pullRequest.head.sha) || github.context.sha;
+    const headSha = commit || (pullRequest && pullRequest.head.sha) || github.context.sha;
 
     const conclusion =  "success";
 
@@ -34,21 +34,18 @@ const action = async () => {
     );
     const octokit = github.getOctokit(gitHubToken);
 
-    const createCheckRequest = {
-        ...github.context.repo,
-        "My Check",
-        head_sha,
-        status,
-        conclusion,
-        output: {
-            title,
-            summary: "Tug's summary",
-            annotations: "Tug Annotations"
-        }    
-    };
 
-    core.info(JSON.stringify(createCheckRequest, null, 2));
-    await octokit.checks.create(createCheckRequest);
+      // Notify check is in progress
+  await octokit.checks.create({
+    owner,
+    repo,
+    name: 'tug-check',
+    head_sha: headSha,
+    status: 'in_progress',
+    started_at: new Date().toISOString()
+  });
+
+
 
 
 
