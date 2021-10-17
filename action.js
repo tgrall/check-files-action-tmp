@@ -19,7 +19,29 @@ const action = async () => {
     const head = core.getInput('head');
     const base = core.getInput('base');
 
-    const octokit = github.getOctokit(gitHubToken)
+    const name = core.getInput('check_name');
+    const status = 'completed';
+
+
+    const octokit = github.getOctokit(gitHubToken);
+
+    const createCheckRequest = {
+        ...github.context.repo,
+        name,
+        head_sha,
+        status,
+        conclusion,
+        output: {
+            title,
+            summary: "Tug's summary",
+            annotations: "Tug Annotations"
+        }    
+    };
+
+    core.debug(JSON.stringify(createCheckRequest, null, 2));
+    await octokit.checks.create(createCheckRequest);
+
+
 
     const params = {
         owner: owner,
