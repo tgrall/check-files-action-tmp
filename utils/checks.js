@@ -4,7 +4,7 @@ const fs = require("fs");
 
 /** Check if file exists **/
 async function checkFileExistence(path) {
-    return fs.promises.access(file, fs.constants.F_OK)
+    return fs.promises.access(path, fs.constants.F_OK)
     .then(() => true)
     .catch(() => false)
   }

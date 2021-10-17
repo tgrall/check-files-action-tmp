@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { checks } = require('./utils/checks');
+const checks = require('./utils/checks');
 
 
 const action = async () => {    
@@ -78,7 +78,7 @@ const action = async () => {
     core.info(JSON.stringify(createCheckRequest, null, 2));
     await octokit.rest.checks.create(createCheckRequest);
 
-
+*/
 
     const createCheckRequest2 = {
         ...github.context.repo,
@@ -94,7 +94,7 @@ const action = async () => {
     };
     await octokit.rest.checks.create(createCheckRequest2);
 
- */
+ 
 
     const params = {
         owner: owner,
