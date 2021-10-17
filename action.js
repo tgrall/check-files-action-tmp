@@ -28,7 +28,7 @@ const action = async () => {
     const head_sha = commit || (pullRequest && pullRequest.head.sha) || github.context.sha;
 
     const conclusion =  "success";
-    
+
     core.info(
         `Posting status '${status}' with conclusion '${conclusion}' to ${link} (sha: ${head_sha})`
     );
@@ -47,7 +47,7 @@ const action = async () => {
         }    
     };
 
-    core.debug(JSON.stringify(createCheckRequest, null, 2));
+    core.info(JSON.stringify(createCheckRequest, null, 2));
     await octokit.checks.create(createCheckRequest);
 
 
