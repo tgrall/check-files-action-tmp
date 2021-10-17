@@ -43,7 +43,7 @@ const action = async () => {
         output: {
             title,
             summary: "Tug's summary",
-            annotations: "Tug Annotations"
+            annotations: ["annot 1", "annot 2"],
         }    
     };
 
