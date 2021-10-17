@@ -46,18 +46,19 @@ const action = async () => {
         conclusion : "success",
         output: {
             title : "Missing Files",
-            summary: "The <i>Missing Files</i> action has returned the following information: ",
+            summary: "", // "The _Missing Files_ action has returned the following information: ",
             annotations: undefined, // no annotations we just want to raise some information
         } 
     }
 
     
     if (licenseExist) {
-        missingFileCheck.summary = missingFileCheck.summary + "<div>License file found<div>";
+        missingFileCheck.summary = missingFileCheck.summary + " ✅  License file found";
     } else {
-        missingFileCheck.summary = missingFileCheck.summary + "<div>License file not found<div>";
+        missingFileCheck.summary = missingFileCheck.summary + "⚠️  License file not found";
         missingFileCheck.conclusion = "warning";
     }
+
     await octokit.rest.checks.create(missingFileCheck);
 
 
