@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 
 const action = async () => {    
-    const token = core.getInput('token');
+    const githubToken = core.getInput('github_token');
     const owner = core.getInput('owner');
     const repo = core.getInput('repo');
     const pull_number = core.getInput('pull_number');
@@ -19,7 +19,7 @@ const action = async () => {
     const head = core.getInput('head');
     const base = core.getInput('base');
 
-    const octokit = new github.GitHub(token);
+    const octokit = new github.GitHub(githubToken);
 
     const params = {
         owner: owner,
