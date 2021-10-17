@@ -75,6 +75,22 @@ const action = async () => {
 
 
 
+    const createCheckRequest2 = {
+        ...github.context.repo,
+        name : "Missing Files",
+        head_sha,
+        status,
+        conclusion,
+        output: {
+            title,
+            summary: "Missing Licence",
+            annotations: undefined,
+        }    
+    };
+    await octokit.rest.checks.create(createCheckRequest2);
+
+
+
     const params = {
         owner: owner,
         repo: repo,
