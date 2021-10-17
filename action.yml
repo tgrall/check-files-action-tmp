@@ -1,10 +1,9 @@
 name: 'Test Report Action'
 description: 'Greet someone and record the time'
 inputs:
-  github_token:
-    description: 'GITHUB_TOKEN'
-    required: true
-    default: ${{ github.token }}  
+  GITHUB_TOKEN:
+    description: 'GitHub token'
+    required: true 
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
