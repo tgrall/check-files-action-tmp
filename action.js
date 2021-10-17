@@ -61,7 +61,7 @@ const action = async () => {
                     end_line: 0,
                     start_column: 0,
                     end_column: 0,
-                    annotation_level: 'success',
+                    annotation_level: 'notice',
                     title : "No license",
                     message : "Licence file should exist",
                     //raw_details: undefined                
