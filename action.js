@@ -54,7 +54,18 @@ const action = async () => {
                 title : "Error in readme",
                 message : "this is invalid",
                 raw_details: undefined                
-                }
+                },
+                {
+                    path : ".",
+                    start_line: 0,
+                    end_line: 0,
+                    start_column: 0,
+                    end_column: 0,
+                    annotation_level: 'failure',
+                    title : "No license",
+                    message : "Licence file should exist",
+                    //raw_details: undefined                
+                    }
             ],
         }    
     };
