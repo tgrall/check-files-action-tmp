@@ -57,14 +57,14 @@ const action = async () => {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅  *License* file found";
     } else {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *License* file not found";
-        missingFileCheck.conclusion = "stale";
+        missingFileCheck.conclusion = "neutral";
     }
 
     if (readMeExists) {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅  *README.md* file found";
     } else {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *README.md* file not found";
-        missingFileCheck.conclusion = "stale";
+        missingFileCheck.conclusion = "neutral";
     }
 
     await octokit.rest.checks.create(missingFileCheck);
