@@ -35,7 +35,7 @@ const action = async () => {
     );
     const octokit = github.getOctokit(gitHubToken);
 
-    const licenseExists = await checks.checkFileExistence("LICENSE2");
+    const licenseExists = await checks.checkFileExistence("LICENSE");
     const readMeExists = await checks.checkFileExistence("README.md");
 
     // create a check for missing file
