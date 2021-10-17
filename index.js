@@ -21,14 +21,6 @@ async function run() {
   const octokit = github.getOctokit(GITHUB_TOKEN)
 
 
-  const  comments  = await octokit.rest.issues.listComments({
-    ...repo,
-    issue_number: pullRequestNumber,
-  });
-
-  console.log(comments)
-
-
   await octokit.rest.issues.createComment({
     ...context.repo,
     issue_number: pull_request.number,
