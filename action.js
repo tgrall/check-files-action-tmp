@@ -36,7 +36,7 @@ const action = async () => {
 
     const createCheckRequest = {
         ...github.context.repo,
-        name,
+        "My Check",
         head_sha,
         status,
         conclusion,
