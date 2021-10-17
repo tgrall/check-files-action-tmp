@@ -11,6 +11,12 @@ try {
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
 
+  core.info(`Hello ${nameToGreet}!`);
+
+  
+  core.info(`Bye ${nameToGreet}!`);
+
+
 } catch (error) {
   core.setFailed(error.message);
 }
