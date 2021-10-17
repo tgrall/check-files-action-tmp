@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { checks } = require('./utils/checks');
 
 
 const action = async () => {    
@@ -34,6 +35,10 @@ const action = async () => {
     );
     const octokit = github.getOctokit(gitHubToken);
 
+    checks.checkFileExistence("LICENSE")
+
+
+    /*
     const createCheckRequest = {
         ...github.context.repo,
         name : "Test Report",
@@ -89,7 +94,7 @@ const action = async () => {
     };
     await octokit.rest.checks.create(createCheckRequest2);
 
-
+ */
 
     const params = {
         owner: owner,
