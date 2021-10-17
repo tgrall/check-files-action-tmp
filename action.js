@@ -36,16 +36,21 @@ const action = async () => {
 
 
       // Notify check is in progress
-  await octokit.checks.create({
-    owner,
-    repo,
-    name: 'tug-check',
-    head_sha: headSha,
-    status: 'in_progress',
-    started_at: new Date().toISOString()
+//   await octokit.checks.create({
+//     owner,
+//     repo,
+//     name: 'tug-check',
+//     head_sha: headSha,
+//     status: 'in_progress',
+//     started_at: new Date().toISOString()
+//   });
+
+
+await octokit.issues.createComment({
+    ...context.repo,
+    issue_number: pullRequest.number,
+    body: 'My generatedcomment....'
   });
-
-
 
 
 
