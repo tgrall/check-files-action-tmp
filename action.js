@@ -27,6 +27,8 @@ const action = async () => {
     const status = 'completed';
     const head_sha = commit || (pullRequest && pullRequest.head.sha) || github.context.sha;
 
+    const conclusion =  "success";
+    
     core.info(
         `Posting status '${status}' with conclusion '${conclusion}' to ${link} (sha: ${head_sha})`
     );
