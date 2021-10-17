@@ -84,7 +84,7 @@ const action = async () => {
         output: {
             title,
             summary: "Missing Licence",
-            annotations: undefined,
+            annotations: "cool?",
         }    
     };
     await octokit.rest.checks.create(createCheckRequest2);
