@@ -56,11 +56,11 @@ const action = async () => {
                 raw_details: undefined                
                 },
                 {
-                    path : ".",
-                    start_line: 0,
-                    end_line: 0,
-                    start_column: 0,
-                    end_column: 0,
+                    // path : ".",
+                    // start_line: 0,
+                    // end_line: 0,
+                    // start_column: 0,
+                    // end_column: 0,
                     annotation_level: 'notice',
                     title : "No license",
                     message : "Licence file should exist",
