@@ -37,7 +37,7 @@ const action = async () => {
     const createCheckRequest = {
         ...github.context.repo,
         name : "Test Report",
-        head_sha,
+        head_sha : head_sha,
         status,
         conclusion,
         output: {
@@ -78,13 +78,13 @@ const action = async () => {
     const createCheckRequest2 = {
         ...github.context.repo,
         name : "Missing Files",
-        head_sha,
-        status,
-        conclusion,
+        head_sha : head_sha,
+        status : status,
+        conclusion : conclusion,
         output: {
-            title,
-            summary: "Missing Licence",
-            annotations: "cool?",
+            title : "Missing Files",
+            summary: "<ul><li>Cool</li></ul>",
+            annotations: undefined,
         }    
     };
     await octokit.rest.checks.create(createCheckRequest2);
