@@ -43,7 +43,6 @@ const action = async () => {
         name : "Missing Files",
         head_sha : head_sha,
         status : "completed",
-        conclusion : "success",
         output: {
             title : "Missing Files",
             summary: "The _Missing Files_ action has returned the following information: ",
@@ -56,7 +55,6 @@ const action = async () => {
         missingFileCheck.output.summary = missingFileCheck.output.summary + " ✅  License file found";
     } else {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "⚠️  License file not found";
-        missingFileCheck.conclusion = "neutral";
     }
 
     await octokit.rest.checks.create(missingFileCheck);
