@@ -35,6 +35,9 @@ const action = async () => {
     const octokit = github.getOctokit(gitHubToken);
 
 
+    const { context = {} } = github;
+    const { pull_request } = context.payload;
+
       // Notify check is in progress
 //   await octokit.checks.create({
 //     owner,
@@ -47,10 +50,10 @@ const action = async () => {
 
 
 await octokit.issues.createComment({
-    ...context.repo,
-    issue_number: pullRequest.number,
-    body: 'My generatedcomment....'
-  });
+  ...context.repo,
+  issue_number: pull_request.number,
+  body: 'Thank you for submitting a pull request! We will try to review this as soon as we can.'
+});
 
 
 
