@@ -37,7 +37,29 @@ const action = async () => {
 
     const licenseExist = await checks.checkFileExistence("LICENSE");
 
-    console.log(licenseExist);
+    // create a check for missing file
+    let missingFileCheck = {
+        ...github.context.repo,
+        name : "Missing Files",
+        head_sha : head_sha,
+        status : "completed",
+        conclusion : "success",
+        output: {
+            title : "Missing Files",
+            summary: "The <i>Missing Files</i> action has returned the following information: ",
+            annotations: undefined, // no annotations we just want to raise some information
+        } 
+    }
+
+    
+    if (licenseExist) {
+        missingFileCheck.summary = missingFileCheck.summary + "<div>License file found<div>";
+    } else {
+        missingFileCheck.summary = missingFileCheck.summary + "<div>License file not found<div>";
+        missingFileCheck.conclusion = "warning";
+    }
+    await octokit.rest.checks.create(missingFileCheck);
+
 
 
     /*
@@ -82,19 +104,7 @@ const action = async () => {
 
 */
 
-    const createCheckRequest2 = {
-        ...github.context.repo,
-        name : "Missing Files",
-        head_sha : head_sha,
-        status : status,
-        conclusion : conclusion,
-        output: {
-            title : "Missing Files",
-            summary: "<ul><li>Cool</li></ul>",
-            annotations: undefined,
-        }    
-    };
-    await octokit.rest.checks.create(createCheckRequest2);
+
 
  
 
