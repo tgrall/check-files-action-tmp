@@ -57,6 +57,7 @@ const action = async () => {
     } else {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *License* file not found";
         missingFileCheck.conclusion = "failure";
+        missingFileCheck.conclusion = "action_required";
     }
 
     await octokit.rest.checks.create(missingFileCheck);
