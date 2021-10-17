@@ -62,6 +62,13 @@ const action = async () => {
 
     if (readMeExists) {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅  *README.md* file found";
+
+        // readme should start with a title
+        const readMeTitle = await checks.checkReadMeTitle();
+        if (!readMeTitle) {
+            console.error(  "readMeTitle is false");
+        }
+
     } else {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *README.md* file not found";
         missingFileCheck.conclusion = "neutral";
