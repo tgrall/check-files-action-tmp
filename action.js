@@ -75,6 +75,7 @@ const action = async () => {
 
         // readme should start with a title
         const readMeTitle = await checks.checkStartsWithTitle("README.md");
+        console.log("readMeTitle", readMeTitle)
         if (!readMeTitle) {
             readmeTitleCheck.conclusion = "failure",
             readmeTitleCheck.output = {
@@ -89,7 +90,7 @@ const action = async () => {
                     end_column: 0,
                     annotation_level: 'failure',
                     title : "README must start with a title",
-                    message : "The README file must start with a title. _(At lease the name of the project)_",
+                    message : "The README file must start with a title. <i>(At lease the name of the project)</i>",
                     raw_details: undefined                
                     },
                     ]
@@ -101,7 +102,7 @@ const action = async () => {
         missingFileCheck.conclusion = "failure";
         readmeTitleCheck.output = {
             title : "Missing README.md file",
-            summary: "You must add `README.md`file with a iitle",
+            summary: "You must add a `README.md`file with a iitle",
             annotations: undefined
             }          
     }
