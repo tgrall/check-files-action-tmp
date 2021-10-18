@@ -64,14 +64,14 @@ const action = async () => {
 
     
     if (licenseExists) {
-        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅  - *License* file found";
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅   *License* file found";
     } else {
-        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️ - *License* file not found";
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *License* file not found";
         missingFileCheck.conclusion = "neutral";
     }
 
     if (readMeExists) {
-        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅  - *README.md* file found";
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅   *README.md* file found";
 
         // readme should start with a title
         const readMeTitle = await checks.checkStartsWithTitle("README.md");
@@ -80,7 +80,7 @@ const action = async () => {
             readmeTitleCheck.conclusion = "failure",
             readmeTitleCheck.output = {
                 title : "Invalid README.md file",
-                summary: "You must start the `README.md` file with a iitle",
+                summary: "⚠️  *License* file not foundYou must start the `README.md` file with a iitle",
                 annotations: [
                     {
                     path : "README.md",
@@ -98,12 +98,12 @@ const action = async () => {
         } else {
             readmeTitleCheck.output = {
                 title : "README.md OK",
-                summary: "✅  - The README.md file starts with a Title"
+                summary: "✅  The README.md file starts with a Title"
             };
         }
 
     } else {
-        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *README.md* file not found";
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️ - *README.md* file not found";
         missingFileCheck.conclusion = "failure";
         readmeTitleCheck.output = {
             title : "Missing README.md file",
