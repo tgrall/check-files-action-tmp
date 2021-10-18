@@ -66,7 +66,32 @@ const action = async () => {
         // readme should start with a title
         const readMeTitle = await checks.checkStartsWithTitle("README.md");
         if (!readMeTitle) {
-            console.error(  "readMeTitle is false");
+            // Create a check and annotation about title
+            const missingFileCheck = {
+                ...github.context.repo,
+                name : "Readme title",
+                head_sha : head_sha,
+                status : "completed",
+                conclusion : "success",
+                output: {
+                    title : "Invalid README.md file",
+                    summary: "You must start the `README.md` file with a iitle",
+                    annotations: [
+                        {
+                        path : "README.md",
+                        start_line: 1,
+                        end_line: 1,
+                        start_column: 0,
+                        end_column: 0,
+                        annotation_level: 'failure',
+                        title : "README must start with a title",
+                        message : "The README file must start with a title. _(At lease the name of the project)_",
+                        raw_details: undefined                
+                        },
+                     ]
+                    } 
+            }
+            
         }
 
     } else {
