@@ -95,6 +95,11 @@ const action = async () => {
                     },
                     ]
                 }             
+        } else {
+            readmeTitleCheck.output = {
+                title : "README.md OK",
+                summary: "✅  The README.md file starts with a Title"
+            };
         }
 
     } else {
