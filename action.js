@@ -41,7 +41,7 @@ const action = async () => {
     // create a check for missing file
     let missingFileCheck = {
         ...github.context.repo,
-        name : "Missing Files",
+        name : "Check Missing Files",
         head_sha : head_sha,
         status : "completed",
         conclusion : "success",
@@ -50,6 +50,32 @@ const action = async () => {
             summary: "The _Missing Files_ action has returned the following information: ",
             annotations: undefined, // no annotations we just want to raise some information
         } 
+    }
+
+    // Create a check and annotation about title
+    let readmeTitleCheck = {
+        ...github.context.repo,
+        name : "Check REAMDE Title",
+        head_sha : head_sha,
+        status : "completed",
+        conclusion : "success",
+        output: {
+            title : "Invalid README.md file",
+            summary: "You must start the `README.md` file with a iitle",
+            annotations: [
+                {
+                path : "README.md",
+                start_line: 1,
+                end_line: 1,
+                start_column: 0,
+                end_column: 0,
+                annotation_level: 'failure',
+                title : "README must start with a title",
+                message : "The README file must start with a title. _(At lease the name of the project)_",
+                raw_details: undefined                
+                },
+                ]
+            } 
     }
 
     
@@ -66,31 +92,7 @@ const action = async () => {
         // readme should start with a title
         const readMeTitle = await checks.checkStartsWithTitle("README.md");
         if (!readMeTitle) {
-            // Create a check and annotation about title
-            const missingFileCheck = {
-                ...github.context.repo,
-                name : "Readme title",
-                head_sha : head_sha,
-                status : "completed",
-                conclusion : "success",
-                output: {
-                    title : "Invalid README.md file",
-                    summary: "You must start the `README.md` file with a iitle",
-                    annotations: [
-                        {
-                        path : "README.md",
-                        start_line: 1,
-                        end_line: 1,
-                        start_column: 0,
-                        end_column: 0,
-                        annotation_level: 'failure',
-                        title : "README must start with a title",
-                        message : "The README file must start with a title. _(At lease the name of the project)_",
-                        raw_details: undefined                
-                        },
-                     ]
-                    } 
-            }
+
             
         }
 
@@ -100,6 +102,7 @@ const action = async () => {
     }
 
     await octokit.rest.checks.create(missingFileCheck);
+    await octokit.rest.checks.create(readmeTitleCheck);
 
 
 
