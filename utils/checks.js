@@ -14,7 +14,7 @@ async function checkFileExistence(path) {
 
 
 // create function that check the first line of a file
-async function checkStartsWithTitle(path, line) {
+async function checkStartsWithTitle(path) {
     return fs.promises.readFile(path, 'utf8')
     .then(data => {     
          return (data.startsWith("#"))    
