@@ -16,10 +16,10 @@ async function checkFileExistence(path) {
 // create function that check the first line of a file
 async function checkStartsWithTitle(path) {
     return fs.promises.readFile(path, 'utf8')
-    .then(data => {     
-        const regEx = /^[ \r\n]+$/gi;
-        const newfileData = data.replace(regEx,"");
-         return (data.startsWith("#"))    
+    .then(data => {    
+        // remove all empty lines
+        data = data.replace(/^\s*[\r\n]/gm, "");
+        return (data.startsWith("#"))    
     })
     .catch(err => {
         console.log(err);

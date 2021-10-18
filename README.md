@@ -16,6 +16,6 @@ The time we greeted you.
 
 ## Example usage
 
-uses: actions/test-report-action@main
+uses: tgrall/test-report-action@main
 with:
   who-to-greet: 'Mona the Octocat'
