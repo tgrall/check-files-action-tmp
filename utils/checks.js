@@ -17,6 +17,8 @@ async function checkFileExistence(path) {
 async function checkStartsWithTitle(path) {
     return fs.promises.readFile(path, 'utf8')
     .then(data => {     
+        const regEx = /^[ \r\n]+$/gi;
+        const newfileData = data.replace(regEx,"");
          return (data.startsWith("#"))    
     })
     .catch(err => {

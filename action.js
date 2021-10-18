@@ -80,7 +80,7 @@ const action = async () => {
             readmeTitleCheck.conclusion = "failure",
             readmeTitleCheck.output = {
                 title : "Invalid README.md file",
-                summary: "⚠️   The README.md file must start with a title. <i>(For example: the name of the project)</i>",
+                summary: "⚠️   The README.md file must start with a title. (For example: the name of the project)",
                 annotations: [
                     {
                     path : "README.md",
@@ -90,7 +90,7 @@ const action = async () => {
                     end_column: 0,
                     annotation_level: 'failure',
                     title : "README must start with a title",
-                    message : "The README file must start with a title. <i>(For example: the name of the project)</i>",
+                    message : "The README file must start with a title. (For example: the name of the project)",
                     raw_details: undefined                
                     },
                     ]
