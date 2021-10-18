@@ -66,7 +66,7 @@ const action = async () => {
     if (licenseExists) {
         missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ✅   *License* file found";
     } else {
-        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️  *License* file not found";
+        missingFileCheck.output.summary = missingFileCheck.output.summary + "\n\n - ⚠️   *License* file not found";
         missingFileCheck.conclusion = "neutral";
     }
 
@@ -80,7 +80,7 @@ const action = async () => {
             readmeTitleCheck.conclusion = "failure",
             readmeTitleCheck.output = {
                 title : "Invalid README.md file",
-                summary: "⚠️  *License* file not foundYou must start the `README.md` file with a iitle",
+                summary: "⚠️   The README.md file must start with a title. <i>(For example: the name of the project)</i>",
                 annotations: [
                     {
                     path : "README.md",
@@ -90,15 +90,15 @@ const action = async () => {
                     end_column: 0,
                     annotation_level: 'failure',
                     title : "README must start with a title",
-                    message : "The README file must start with a title. <i>(At lease the name of the project)</i>",
+                    message : "The README file must start with a title. <i>(For example: the name of the project)</i>",
                     raw_details: undefined                
                     },
                     ]
                 }             
         } else {
             readmeTitleCheck.output = {
-                title : "README.md OK",
-                summary: "✅  The README.md file starts with a Title"
+                title : "README.md file is correct",
+                summary: "✅   The README.md file starts with a Title"
             };
         }
 
